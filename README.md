@@ -7,6 +7,8 @@ The marketing site for Markix (markix.app). It is a static site with no build st
     index.html        page markup and copy
     css/styles.css    all styling: palette, type, layout, responsive rules
     js/main.js        behaviour: scroll highlights, the channel slider, the contact form
+    sitemap.xml       page list for search engines (submitted in Google Search Console)
+    robots.txt        crawler rules; points to the sitemap
     README.md         this file
 
 ## View it locally
@@ -26,8 +28,13 @@ The live site is a Cloudflare project with markix.app as its custom domain.
 
 1. In the Cloudflare dashboard, open Workers & Pages and pick the project.
 2. Create a new deployment and upload the whole folder (or a zip of it), keeping
-   the `css` and `js` folders next to `index.html`.
+   the `css` and `js` folders next to `index.html`, and `sitemap.xml` and
+   `robots.txt` at the top level beside it.
 3. The address stays the same; the new version is live in about a minute.
+4. Check https://markix.app/sitemap.xml and https://markix.app/robots.txt show
+   the files' text, not the homepage.
+
+If you add a page, add its address to `sitemap.xml` and update `<lastmod>`.
 
 ## Contact form
 
