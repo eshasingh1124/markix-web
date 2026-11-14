@@ -4,18 +4,20 @@ The marketing site for Markix (markix.app). It is a static site with no build st
 
 ## What's here
 
-    index.html        page markup and copy
-    css/styles.css    all styling: palette, type, layout, responsive rules
-    js/main.js        behaviour: scroll highlights, the channel slider, the contact form
-    sitemap.xml       page list for search engines (submitted in Google Search Console)
-    robots.txt        crawler rules; points to the sitemap
-    README.md         this file
+    public/                   everything published on markix.app
+      index.html              page markup and copy
+      css/styles.css          all styling: palette, type, layout, responsive rules
+      js/main.js              behaviour: scroll highlights, the channel slider, the contact form
+      sitemap.xml             page list for search engines (submitted in Google Search Console)
+      robots.txt              crawler rules; points to the sitemap
+    wrangler.jsonc            Cloudflare settings: which Worker to deploy to, and to publish public/
+    README.md                 this file
 
 ## View it locally
 
-Serve the folder (opening `index.html` directly also works in most desktop browsers):
+Serve the `public` folder (opening `public/index.html` directly also works in most desktop browsers):
 
-    python3 -m http.server 8000
+    python3 -m http.server 8000 --directory public
 
 then go to http://localhost:8000.
 
@@ -24,22 +26,24 @@ limit" slider looks empty there. Use a real browser or the live site.
 
 ## Deploy (Cloudflare)
 
-The live site is a Cloudflare project with markix.app as its custom domain.
+The live site is the Cloudflare Worker `mute-paper-4276`, with markix.app as its
+custom domain. It is connected to this GitHub repository: every push to `main`
+deploys automatically (Cloudflare runs `npx wrangler deploy`, which publishes
+the `public` folder, as set in `wrangler.jsonc`). Pushes to other branches build
+a preview version without changing the live site.
 
-1. In the Cloudflare dashboard, open Workers & Pages and pick the project.
-2. Create a new deployment and upload the whole folder (or a zip of it), keeping
-   the `css` and `js` folders next to `index.html`, and `sitemap.xml` and
-   `robots.txt` at the top level beside it.
-3. The address stays the same; the new version is live in about a minute.
-4. Check https://markix.app/sitemap.xml and https://markix.app/robots.txt show
-   the files' text, not the homepage.
+1. Change files under `public/` and push to `main` (or merge a pull request).
+2. In the Cloudflare dashboard, Workers & Pages, `mute-paper-4276`, Deployments,
+   watch the build finish; the new version is live about a minute later.
+3. Check https://markix.app/sitemap.xml and https://markix.app/robots.txt show
+   the files' text, not a blank page.
 
-If you add a page, add its address to `sitemap.xml` and update `<lastmod>`.
+If you add a page, add its address to `public/sitemap.xml` and update `<lastmod>`.
 
 ## Contact form
 
 The form posts to Formspree. The endpoint is set near the bottom of
-`js/main.js`:
+`public/js/main.js`:
 
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myewzwqz';
 
@@ -52,9 +56,9 @@ may fall back to the copy-and-email message.
 
 ## Editing
 
-- Text: edit the HTML in `index.html` directly.
+- Text: edit the HTML in `public/index.html` directly.
 - Colours and fonts: the palette is the `:root` block at the top of
-  `css/styles.css`. Fonts load from Google Fonts in the `<head>` of `index.html`.
+  `public/css/styles.css`. Fonts load from Google Fonts in the `<head>` of `public/index.html`.
 - Sample figures (the channel table, the proof numbers and the slider curves)
   come from a fictional demo brand. The slider's curve values are in the `CH`
-  array in `js/main.js`.
+  array in `public/js/main.js`.

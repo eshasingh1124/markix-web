@@ -1,0 +1,10 @@
+// Cloudflare Workers config. On every push to main, Cloudflare runs
+// `npx wrangler deploy`, which publishes the files in public/ to the Worker
+// that serves markix.app.
+{
+  "name": "mute-paper-4276",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public"
+  }
+}
