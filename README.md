@@ -6,8 +6,10 @@ The marketing site for Markix (markix.app). It is a static site with no build st
 
     public/                   everything published on markix.app
       index.html              page markup and copy
-      css/styles.css          all styling: palette, type, layout, responsive rules
-      js/main.js              behaviour: scroll highlights, the channel slider, the contact form
+      css/styles.css          all styling: colours, type, layout, phone rules
+      js/main.js              behaviour: animations, the "Ask Markix" demo, the contact form
+      favicon.svg / .ico      the logo icon (browser tab and Google results)
+      logo.png, icon-*.png, apple-touch-icon.png, site.webmanifest   logo sizes for Google, phones and sharing
       sitemap.xml             page list for search engines (submitted in Google Search Console)
       robots.txt              crawler rules; points to the sitemap
     wrangler.jsonc            Cloudflare settings: which Worker to deploy to, and to publish public/
@@ -57,8 +59,11 @@ may fall back to the copy-and-email message.
 ## Editing
 
 - Text: edit the HTML in `public/index.html` directly.
-- Colours and fonts: the palette is the `:root` block at the top of
-  `public/css/styles.css`. Fonts load from Google Fonts in the `<head>` of `public/index.html`.
-- Sample figures (the channel table, the proof numbers and the slider curves)
-  come from a fictional demo brand. The slider's curve values are in the `CH`
-  array in `public/js/main.js`.
+- Colours and fonts: the `:root` block at the top of `public/css/styles.css`.
+  The font (Inter Tight) loads from Google Fonts in the `<head>` of `public/index.html`.
+- "Ask Markix" answers: the `A` object in `public/js/main.js`. They are real
+  outputs from the Markix tool (`run_mmm.py --ask`) on its demo brand, shortened.
+- Example figures (the ₹1,000 sale, the result cards) come from fictional demo
+  brands with known results, as the footer says.
+- Logo: `public/favicon.svg` is the source. If you change it, regenerate the PNG
+  sizes and `favicon.ico` from it.
