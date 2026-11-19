@@ -159,3 +159,41 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .bars2 div{grid-template-columns:72px 1fr 50px}
   form{padding:22px}
 }
+
+/* sample report inside the hero panel */
+.art{aspect-ratio:auto;padding:76px clamp(18px,4vw,56px) clamp(22px,4vw,48px)}
+.sample{position:relative;background:#fff;color:var(--ink);border-radius:16px;padding:clamp(14px,2.4vw,26px);max-width:860px;margin:0 auto;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.srow{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:12px;align-items:center;padding:13px 4px;border-top:1px solid var(--line);font-size:16px}
+.srow.sh{border-top:0;font-size:13px;color:var(--muted);padding-top:0}
+.srow .v{font-weight:600;font-variant-numeric:tabular-nums}
+.tagx{justify-self:start;font-size:13px;font-weight:600;border-radius:999px;padding:5px 11px}
+.tagx.grow{background:var(--sun)}.tagx.hold{background:#e8e7e1}.tagx.trim{background:var(--ink);color:#fff}
+.plan{margin-top:12px;background:var(--butter);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px}
+.plan b{font-weight:600;white-space:nowrap}
+
+/* what you get */
+.gets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.gets div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.gets .n{width:32px;height:32px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:600;font-size:15px}
+.gets h3{font-size:21px;margin:26px 0 6px}
+.gets p{color:var(--muted);font-size:15px}
+
+/* faq */
+.faq .wrap{max-width:860px}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;font-weight:500;font-size:19px;display:flex;justify-content:space-between;gap:20px;letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:10px;max-width:700px}
+
+@media(max-width:900px){.gets{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+  .art{padding:60px 12px 14px}
+  .art .top span:last-child{display:inline}
+  .gets{grid-template-columns:1fr}
+  .srow{grid-template-columns:1fr auto auto;font-size:14px;gap:10px}
+  .srow > :nth-child(2){display:none}
+  .plan{flex-direction:column;align-items:flex-start;gap:6px}
+}

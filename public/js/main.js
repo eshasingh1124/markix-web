@@ -6,7 +6,6 @@
   $$('.rv').forEach(el => io.observe(el));
   const once = (el, fn, th = .4) => new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { fn(); o.disconnect(); } }, {threshold: th}).observe(el);
 
-  once($('#art'), () => $$('#art .bars i').forEach((b, i) => setTimeout(() => b.style.height = b.dataset.h + '%', reduce ? 0 : 150 + i * 120)), .2);
 
   const lines = $$('#claim .lines div'), sum = $('#sum');
   if (!reduce) sum.textContent = '₹0';
