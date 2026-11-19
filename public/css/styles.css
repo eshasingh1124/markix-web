@@ -197,3 +197,8 @@ details p{color:var(--muted);margin-top:10px;max-width:700px}
   .srow > :nth-child(2){display:none}
   .plan{flex-direction:column;align-items:flex-start;gap:6px}
 }
+
+/* one-line problem band */
+.band{padding:90px 0 0}
+.band p{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.03em;line-height:1.15;max-width:900px}
+.band b{font-weight:500;background:var(--sun);padding:0 .12em;border-radius:6px}

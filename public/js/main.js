@@ -7,9 +7,6 @@
   const once = (el, fn, th = .4) => new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { fn(); o.disconnect(); } }, {threshold: th}).observe(el);
 
 
-  const lines = $$('#claim .lines div'), sum = $('#sum');
-  if (!reduce) sum.textContent = '₹0';
-  once($('#claim'), () => lines.forEach((l, i) => setTimeout(() => { l.classList.add('on'); sum.textContent = '₹' + ((i + 1) * 1000).toLocaleString('en-IN'); }, reduce ? 0 : 250 + i * 600)));
 
   // real outputs from the Markix tool on its demo brand
   const row = (n, v, m, t, g) => `<div><span>${n}</span><i class="${g ? 'g' : ''}" style="width:${v / m * 100}%"></i><span>${t}</span></div>`;
